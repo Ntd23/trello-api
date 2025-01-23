@@ -21,7 +21,7 @@ const START_SERVER = () => {
   app.get("/", (req, res) => {
     res.end("<h1>Hello World!</h1><hr>");
   });
-  if (env.BUILD_MODE === "production") {
+  if (env.BUILD_MODE === "prod") {
     app.listen(process.env.PORT, () => {
       console.log(`Living at production port ${process.env.PORT}`);
     });
