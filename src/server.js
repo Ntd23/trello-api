@@ -22,6 +22,7 @@ const START_SERVER = () => {
     res.end("<h1>Hello World!</h1><hr>");
   });
   if (env.BUILD_MODE === "prod") {
+    console.log(env.BUILD_MODE);
     app.listen(process.env.PORT, () => {
       console.log(`Living at production port ${process.env.PORT}`);
     });
