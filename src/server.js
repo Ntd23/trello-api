@@ -21,12 +21,17 @@ const START_SERVER = () => {
   app.get("/", (req, res) => {
     res.end("<h1>Hello World!</h1><hr>");
   });
-
-  app.listen(env.APP_PORT, env.APP_HOST, () => {
-    console.log(
-      `http://${env.APP_HOST}:${env.APP_PORT} by author ${env.AUTHOR}`
-    );
-  });
+  if (env.BUILD_MODE === "production") {
+    app.listen(process.env.PORT, () => {
+      console.log(`Living at production port ${process.env.PORT}`);
+    });
+  } else {
+    app.listen(env.LOCAL_DEV_APP_PORT, env.LOCAL_DEV_APP_HOST, () => {
+      console.log(
+        `http://${env.LOCAL_DEV_APP_HOST}:${env.LOCAL_DEV_APP_PORT} by author ${env.AUTHOR}`
+      );
+    });
+  }
 
   exitHook(() => {
     CLOSE_DB();
