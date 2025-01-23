@@ -26,6 +26,8 @@ const START_SERVER = () => {
       console.log(`Living at production port ${process.env.PORT}`);
     });
   } else {
+    console.log(env.BUILD_MODE);
+
     app.listen(env.LOCAL_DEV_APP_PORT, env.LOCAL_DEV_APP_HOST, () => {
       console.log(
         `http://${env.LOCAL_DEV_APP_HOST}:${env.LOCAL_DEV_APP_PORT} by author ${env.AUTHOR}`
